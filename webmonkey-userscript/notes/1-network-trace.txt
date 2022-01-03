@@ -1,0 +1,36 @@
+--------------------------------------------------------------------------------
+// https://v2.apimdb.net/e/movie/tt10872600
+
+network request:
+================
+curl "https://v2.apimdb.net/playS/voxzer/tt10872600/www.imdb.com/?t=movie" -H "Referer: https://v2.apimdb.net/e/movie/tt10872600"
+
+network response:
+=================
+<html>
+  ...
+  <iframe id="frame" src="https://player.voxzer.org/view/4d7bb4acd406009ab9d7e61b" allowfullscreen></iframe>
+</html>
+
+--------------------------------------------------------------------------------
+// https://player.voxzer.org/view/4d7bb4acd406009ab9d7e61b
+
+console script:
+===============
+fetch('/list/4d7bb4acd406009ab9d7e61b').then(r => r.json()).then(console.log)
+
+console output:
+===============
+{link: "https://player.voxzer.org/play/4726838b2c8f4965125096cc63c977aa/4d7bb4acd406009ab9d7e61b/index.m3u8"}
+
+----------------------------------------
+
+network request:
+================
+curl "https://player.voxzer.org/list/4d7bb4acd406009ab9d7e61b" -H "Referer: https://player.voxzer.org/view/4d7bb4acd406009ab9d7e61b"
+
+network response:
+=================
+{link: "https://player.voxzer.org/play/4726838b2c8f4965125096cc63c977aa/4d7bb4acd406009ab9d7e61b/index.m3u8"}
+
+--------------------------------------------------------------------------------
